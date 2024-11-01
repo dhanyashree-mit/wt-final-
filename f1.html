@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival Booking</title>
+    <link rel="stylesheet" href="f1.css">
+    <style>
+        body {
+            font-family: 'Freckle Face', cursive;
+            background-color: #1b7a80;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+            color: pink;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #290232;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .navbar h1 {
+            font-size: 1.8em;
+            color: #e6d4a6;
+            margin: 0;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 40px;
+            font-size: 1.5em;
+        }
+
+        .navbar a {
+            color: #f5e4c3;
+            text-decoration: none;
+            padding: 15px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #b91372;
+            border-radius: 5px;
+        }
+	
+
+        .image-scroll {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+           
+            border-radius: 10px;
+            background-color: #fff;
+            width: 100%; /* Full width */
+            max-width: 100%;
+        }
+
+        .image-scroll::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .image-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        .image-scroll::-webkit-scrollbar-thumb {
+            background: #ff007f;
+            border-radius: 10px;
+        }
+
+        .image-scroll::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00;
+        }
+
+        .image-scroll a {
+            display: inline-block;
+            margin-right: 10px; /* Space between images */
+        }
+
+        .image-scroll a img {
+            width: 200px; /* Fixed width */
+            height: 300px; /* Fixed height */
+            object-fit: cover; /* Maintain aspect ratio */
+            border-radius: 5px;
+            padding: 2px;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-scroll a img:hover {
+            opacity: 0.7;
+        }
+	.image-scroll a img {
+    width: 300px; /* Increased width */
+    height: 400px; /* Increased height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 5px;
+    padding: 2px;
+    transition: opacity 0.3s ease;
+}
+        /* Toggle Button Styles */
+        #toggle-button {
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff007f;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        #toggle-button:hover {
+            background-color: #ff8c00;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        .night-mode #toggle-button {
+            background-color: #ff8c00;
+            color: black;
+        }
+
+        .night-mode #toggle-button:hover {
+            background-color: #ff007f;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        .image-scroll {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        .image-scroll a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        /* Image Animation Styles */
+        .image-scroll a img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+            padding: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .image-scroll a img:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            opacity: 0.85;
+        }
+
+        .form-container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff8c00;
+        }
+
+        footer {
+            background-color: gray;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Night mode styles */
+        .night-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .night-mode .navbar {
+            background-color: #1f1f1f;
+        }
+
+        .night-mode .navbar a {
+            color: #f5e4c3;
+        }
+
+        .night-mode section,
+        .night-mode .form-container,
+        .night-mode footer {
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar nav {
+                flex-direction: column;
+                align-items: center;
+                font-size: 1.2em;
+            }
+
+            .navbar a {
+                padding: 10px 0;
+            }
+
+            .image-scroll a img {
+                width: 90%; /* Adjust for smaller screens */
+                height: auto;
+            }
+
+            .form-container {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar h1 {
+                font-size: 1.5em;
+            }
+
+            .logo {
+                height: 50px;
+                width: 50px;
+            }
+
+            .navbar nav {
+                gap: 20px;
+            }
+
+            .image-scroll a img {
+                width: 100%; /* Full width on very small screens */
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-left">
+                <img src="logo.jpg" alt="Logo" class="logo">
+                <h1>Festopia</h1>
+            </div>
+            <nav>
+                <a href="Home">Home</a>
+                <a href="#events">Sponsors</a>
+                <a href="#book">Conclave</a>
+                <a href="#contact">Events</a>
+                <a href="#contact">About Us</a>
+            </nav>
+            <button id="toggle-button">Toggle Night Mode</button>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About the Festival</h2>
+        <img src="con.jpg" alt="Festival Image" width="100%" height="500px" id="immg1">
+        <p>Join us for an unforgettable experience filled with music, art, and culture!</p>
+    </section>
+
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <div class="event">
+            <h3>Music Fest</h3>
+            <div class="image-scroll">
+                <a href="music1.html"><img src="taylor1.jpg" alt="Music Fest Image 1"></a>
+                <a href="reh1.html"><img src="reh1.jpg" alt="Music Fest Image 2"></a>
+                <a href="neha1.html"><img src="neha1.jpg" alt="Music Fest Image 3"></a>
+                <a href="shreya1.html"><img src="shreya1.jpg" alt="Music Fest Image 4"></a>
+                <a href="sing1.html"><img src="sing1.jpg" alt="Music Fest Image 5"></a>
+                <a href="amaal1.html"><img src="amaal1.jpg" alt="Dance Fest Image 6"></a>
+            </div>
+            <p>Date: July 10-12</p>
+            <p>Location: Central Park</p>
+        </div>
+
+        <div class="event">
+            <h3>Dance Fest</h3>
+            <div class="image-scroll">
+                <a href="ma1.html"><img src="ma1.jpg" alt="Dance Fest Image 1"></a>
+                <a href="dancingstars.html"><img src="dance3.jpg" alt="Dance Fest Image 2"></a>
+                <a href="nrityagram1.html"><img src="nrityagram1.jpg" alt="Dance Fest Image 3"></a>
+                <a href="bq1.html"><img src="hq1.jpg" alt="Dance Fest Image 4"></a>
+                <a href="mb1.html"><img src="mp3.jpg" alt="Dance Fest Image 5"></a>
+                <a href="bb1.html"><img src="bb1jpg.jpg" alt="Dance Fest Image 6"></a>
+            </div>
+            <p>Date: August 5-7</p>
+            <p>Location: Downtown</p>
+        </div>
+
+        <div class="event">
+            <h3>Stand Up Comedy</h3>
+            <div class="image-scroll">
+                <a href="atul1.html"><img src="atul1.jpg" alt="Comedy Image 1"></a>
+                <a href="pant1.html"><img src="pant1.jpg" alt="Comedy Image 2"></a>
+                <a href="rahul1.html"><img src="rahul1.jpg" alt="Comedy Image 3"></a>
+            </div>
+            <p>Date: July 10-12</p>
+            <p>Location: Central Park</p>
+        </div>
+    </section>
+
+    <section id="book" class="form-container">
+        <h2>Book Your Tickets</h2>
+        <form id="booking-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="event">Select Event:</label>
+            <select id="event" name="event" required>
+                <option value="music-fest">Music Fest</option>
+                <option value="dance-fest">Dance Fest</option>
+            </select>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@festivalbooking.co</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Festopia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-button');
+
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('night-mode');
+            const nightModeEnabled = document.body.classList.contains('night-mode');
+            setCookie('nightMode', nightModeEnabled ? 'true' : 'false', 7);
+        });
+
+        window.addEventListener('load', () => {
+            const nightModeCookie = getCookie('nightMode');
+            if (nightModeCookie === 'true') {
+                document.body.classList.add('night-mode');
+            }
+
+            const images = document.querySelectorAll('.image-scroll a img');
+            images.forEach((img, index) => {
+                setTimeout(() => {
+                    img.style.opacity = 1;
+                }, index * 300);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="fest1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff007f;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .concert-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .book-now {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .book-now:hover {
+            background-color: #ff8c00;
+            transform: scale(1.05);
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            padding-left: 400px;
+        }
+
+        .navbar button {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .navbar .back-button {
+            background-color: #e60045;
+        }
+
+        .navbar .back-button:hover {
+            background-color: #ff0088;
+            transform: scale(1.05);
+        }
+
+        .navbar #toggle-button {
+            background-color: #007bff;
+        }
+
+        .navbar #toggle-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.night-mode section {
+            background-color: #222;
+            color: #fff;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff8c00;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .ticket {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e0ffe0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .footer-content {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .footer-icons a {
+            margin: 0 10px;
+        }
+
+        body.night-mode footer {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .stickers {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .stickers img {
+            margin: 0 5px;
+        }
+
+        @media (max-width: 1068px) {
+            .navbar {
+                padding-left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 20px;
+            }
+
+            .navbar ul {
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .navbar li {
+                margin: 5px 0;
+            }
+
+            .navbar .back-button, .navbar #toggle-button {
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+
+        .concert-info, .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+
+        .book-now, #toggle-button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 color="pink">Festopia</h1>
+    <img src="logo.jpg" alt="Music Fest Image 1" width="150px" height="150px" border-radius="50px">
+    <nav class="navbar">
+        <button class="back-button" onclick="window.location.href='fest1.html'">Back</button>
+        <button id="toggle-button">Toggle Night Mode</button>
+    </nav>
+</header>
+<header>
+    <h1>Arijit Singh</h1>
+</header>
+
+<section class="concert-info">
+    <h2>Join Us for an Unforgettable Night!</h2>
+    <p>Date: Dec 03, 2024</p>
+    <p>Location: Our College</p>
+    <p>Get ready for a night of amazing music and unforgettable memories!</p>
+    <button class="book-now" onclick="showBookingForm()">Book Now</button>
+</section>
+
+<section class="gallery">
+    <img src="sing1.jpg" alt="Image 1">
+    <img src="sing2.jpg" alt="Image 2">
+    <img src="sing3.jpg" alt="Image 3">
+    <img src="sing4.jpg" alt="Image 4">
+    <img src="sing5.jpg" alt="Image 5">
+</section>
+
+<section id="booking" class="form-container">
+    <h2>Book Your Tickets Now!</h2>
+    <form id="booking-form" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" accesskey="n" required>
+        <span class="error" id="name-error"></span>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" accesskey="m" required>
+        <span class="error" id="email-error"></span>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" accesskey="p" required>
+        <span class="error" id="phone-error"></span>
+
+        <label for="people">Number of People:</label>
+        <input type="number" id="people" name="people" min="1" required>
+        <span class="error" id="people-error"></span>
+
+        <label for="card">Card Number:</label>
+        <input type="text" id="card" name="card" accesskey="c" required>
+        <span class="error" id="card-error"></span>
+
+        <label for="payment">Payment Mode:</label>
+        <select id="payment" name="payment" required>
+            <option value="">Select</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="debit-card">Debit Card</option>
+        </select>
+
+        <button type="submit">Reserve Your Tickets</button>
+    </form>
+</section>
+
+<div id="ticket" class="ticket">
+    <h2>Your Ticket</h2>
+    <p>Thank you for booking your tickets!</p>
+    <p><strong>Concert:</strong> Arijit Singh</p>
+    <p><strong>Date:</strong> Dec 03, 2024</p>
+    <p><strong>Location:</strong> Our College</p>
+    <p><strong>Number of People:</strong> <span id="ticket-people"></span></p>
+    <p><strong>Email:</strong> <span id="ticket-email"></span></p>
+    <p><strong>Payment Mode:</strong> <span id="ticket-payment"></span></p>
+    <p><strong>Total Cost:</strong> Rs <span id="ticket-cost"></span></p>
+    <p>Your ticket is confirmed! Enjoy the concert!</p>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Concert Event. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">
+                <img src="instagram-icon.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a href="mailto:info@festivalbooking.co">
+                <img src="email-icon.png" alt="Email" width="30" height="30">
+            </a>
+            <a href="tel:+1234567890">
+                <img src="phone-icon.png" alt="Phone" width="30" height="30">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const ticketPrice = 500;
+
+    function showBookingForm() {
+        document.querySelector('.form-container').style.display = 'block';
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function validateForm() {
+        let isValid = true;
+
+        document.getElementById('name-error').textContent = '';
+        document.getElementById('email-error').textContent = '';
+        document.getElementById('phone-error').textContent = '';
+        document.getElementById('people-error').textContent = '';
+        document.getElementById('card-error').textContent = '';
+
+        const name = document.getElementById('name').value;
+        if (name.length < 3) {
+            document.getElementById('name-error').textContent = 'Name must be at least 3 characters.';
+            isValid = false;
+        }
+
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+            document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+            isValid = false;
+        }
+
+        const phone = document.getElementById('phone').value;
+        const phonePattern = /^\d{10}$/;
+        if (!phone.match(phonePattern)) {
+            document.getElementById('phone-error').textContent = 'Please enter a valid phone number.';
+            isValid = false;
+        }
+
+        const people = document.getElementById('people').value;
+        if (people < 1) {
+            document.getElementById('people-error').textContent = 'Number of people must be at least 1.';
+            isValid = false;
+        }
+
+        const card = document.getElementById('card').value;
+        const cardPattern = /^\d{16}$/;
+        if (!card.match(cardPattern)) {
+            document.getElementById('card-error').textContent = 'Please enter a valid 16-digit card number.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            generateTicket();
+        }
+
+        return false;
+    }
+
+    function generateTicket() {
+        const people = document.getElementById('people').value;
+        const email = document.getElementById('email').value;
+        const paymentMode = document.getElementById('payment').value;
+        const totalCost = people * ticketPrice;
+
+        document.getElementById('ticket-people').textContent = people;
+        document.getElementById('ticket-email').textContent = email;
+        document.getElementById('ticket-payment').textContent = paymentMode;
+        document.getElementById('ticket-cost').textContent = totalCost;
+
+        document.getElementById('ticket').style.display = 'block';
+        document.querySelector('.form-container').style.display = 'none';
+    }
+
+    const toggleButton = document.getElementById('toggle-button');
+
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('night-mode');
+    });
+</script>
+</body>
+</html>
