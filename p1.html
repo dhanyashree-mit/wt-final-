@@ -1,0 +1,434 @@
+			<!DOCTYPE html>
+<html lang="en">
+<head>
+		<link rel="stylesheet" href="fest1.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Swift Concert</title>
+	
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff007f;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .concert-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .book-now {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .book-now:hover {
+            background-color: #ff8c00;
+            transform: scale(1.05);
+        }
+
+        .form-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+	 .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            padding: 10px 20px;
+		padding-left:400px;
+        }
+
+        .navbar button {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Added transform for animation */
+		
+        }
+
+        .navbar .back-button {
+            background-color: #e60045; /* Changed color of the back button */
+        }
+
+        .navbar .back-button:hover {
+            background-color: #ff0088; /* Lighter color on hover */
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .navbar #toggle-button {
+            background-color: #007bff;
+        }
+
+        .navbar #toggle-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        section {
+            background-color: #fff; /* Default section background */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for night mode */
+        }
+
+        body.night-mode section {
+            background-color: #222; /* Darker background for all sections in night mode */
+            color: #fff; /* White text for all sections in night mode */
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff007f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff8c00;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .ticket {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e0ffe0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+        }
+	.footer-content {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.footer-icons a {
+    margin: 0 10px;
+}
+body.night-mode footer {
+            background-color: #000; /* Black background for footer in night mode */
+            color: #fff; /* White text for footer */
+        }
+
+.stickers {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.stickers img {
+    margin: 0 5px;
+}
+@media (max-width: 1068px) {
+    .navbar {
+		padding-left:30px;
+}
+}
+/* Responsive navbar styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+        padding-left: 20px; /* Adjust padding */
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-direction: column; /* Stack list items vertically */
+        padding: 0;
+    }
+
+    .navbar li {
+        margin: 5px 0; /* Add some space between items */
+    }
+
+    .navbar .back-button, .navbar #toggle-button {
+        margin-top: 10px; /* Space between buttons and list */
+        width: 100%; /* Full width for buttons */
+    }
+}
+
+    </style></head>
+<body>
+	<header>
+	  <h1 color="pink">Festopia</h1>
+	
+      <img src="logo.jpg" alt="Music Fest Image 1" width="150px" height="150px" border-radius="50px">
+
+        
+	<nav class="navbar">
+       
+    
+
+            <ul style="list-style: none; padding: 0; text-align: center;">
+                <li style="display: inline; margin-right: 15px;"><a href="Home">Home</a></li>
+                <li style="display: inline; margin-right: 15px;"><a href="#events">Sponsors</a></li>
+                <li style="display: inline; margin-right: 15px;"><a href="#book">Conclave</a></li>
+                <li style="display: inline;"><a href="#contact">Events</a></li>
+			                <li style="display: inline;"><a href="#contact">About Us</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <button class="back-button" onclick="window.location.href='fest1.html'">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="toggle-button">Toggle Night Mode</button>
+
+
+            </ul>
+        </nav>
+    </header>
+
+        <h1>Atul Khatri</h1>
+    </header>
+
+    <section class="concert-info">
+        <h2>Join Us for an Unforgettable Night!</h2>
+        <p>Date: September 30, 2024</p>
+        <p>Location: Madison Square Garden, New York</p>
+        <p>Get ready for a night of amazing music and unforgettable memories!</p>
+        <button class="book-now" onclick="showBookingForm()">Book Now</button>
+    </section>
+
+    <section class="gallery">
+        <img src="p1.jpg" alt="Neeti Palta">
+        <img src="p2.jpg" alt="Neeti Palta">
+        <img src="p3.jpg" alt="Neeti Palta">
+        <img src="p4.jpg" alt="Neeti Palta">
+        <img src="p5.jpg" alt="Neeti Palta">
+    </section>
+
+    <section id="booking" class="form-container">
+        <h2>Book Your Tickets Now!</h2>
+        <form id="booking-form" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error" id="name-error"></span>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="email-error"></span>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <span class="error" id="phone-error"></span>
+
+            <label for="people">Number of People:</label>
+            <input type="number" id="people" name="people" min="1" required>
+            <span class="error" id="people-error"></span>
+
+            <label for="card">Card Number:</label>
+            <input type="text" id="card" name="card" required>
+            <span class="error" id="card-error"></span>
+
+            <label for="payment">Payment Mode:</label>
+            <select id="payment" name="payment" required>
+                <option value="">Select</option>
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="debit-card">Debit Card</option>
+            </select>
+
+            <button type="submit">Reserve Your Tickets</button>
+        </form>
+    </section>
+
+    <div id="ticket" class="ticket">
+        <h2>Your Ticket</h2>
+        <p>Thank you for booking your tickets!</p>
+        <p><strong>Concert:</strong> Neeti Palta</p>
+        <p><strong>Date:</strong> Dec 05, 2024</p>
+        <p><strong>Location:</strong> Our College</p>
+        <p><strong>Number of People:</strong> <span id="ticket-people"></span></p>
+        <p><strong>Email:</strong> <span id="ticket-email"></span></p>
+        <p><strong>Payment Mode:</strong> <span id="ticket-payment"></span></p>
+        <p><strong>Total Cost:</strong> Rs<span id="ticket-cost"></span></p>
+        <p>Your ticket is confirmed! Enjoy the concert!</p>
+    </div>
+</script>
+<section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@festivalbooking.co</p>
+    </section>
+	<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Concert Event. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">
+                <img src="instagram-icon.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a href="mailto:info@festivalbooking.co">
+                <img src="email-icon.png" alt="Email" width="30" height="30">
+            </a>
+            <a href="tel:+1234567890">
+                <img src="phone-icon.png" alt="Phone" width="30" height="30">
+            </a>
+        </div>
+    </div>
+   
+</footer>
+
+
+    <script>
+        const ticketPrice = 500; // Cost per person
+
+        function showBookingForm() {
+            document.querySelector('.form-container').style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function validateForm() {
+            let isValid = true;
+
+            // Clear previous errors
+            document.getElementById('name-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('phone-error').textContent = '';
+            document.getElementById('people-error').textContent = '';
+            document.getElementById('card-error').textContent = '';
+
+            // Validate name
+            const name = document.getElementById('name').value;
+            if (name.length < 3) {
+                document.getElementById('name-error').textContent = 'Name must be at least 3 characters.';
+                isValid = false;
+            }
+
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            // Validate phone
+            const phone = document.getElementById('phone').value;
+            const phonePattern = /^\d{10}$/; // Adjust the pattern as needed
+            if (!phone.match(phonePattern)) {
+                document.getElementById('phone-error').textContent = 'Please enter a valid phone number.';
+                isValid = false;
+            }
+
+            // Validate number of people
+            const people = document.getElementById('people').value;
+            if (people < 1) {
+                document.getElementById('people-error').textContent = 'Number of people must be at least 1.';
+                isValid = false;
+            }
+
+            // Validate card number
+            const card = document.getElementById('card').value;
+            const cardPattern = /^\d{16}$/; // Simple validation for a 16-digit card number
+            if (!card.match(cardPattern)) {
+                document.getElementById('card-error').textContent = 'Please enter a valid 16-digit card number.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                generateTicket();
+            }
+
+            return false; // Prevent form submission
+        }
+
+        function generateTicket() {
+            const people = document.getElementById('people').value;
+            const email = document.getElementById('email').value;
+            const paymentMode = document.getElementById('payment').value;
+            const totalCost = people * ticketPrice;
+
+            // Display ticket details
+            document.getElementById('ticket-people').textContent = people;
+            document.getElementById('ticket-email').textContent = email;
+            document.getElementById('ticket-payment').textContent = paymentMode;
+            document.getElementById('ticket-cost').textContent = totalCost;
+
+            // Show the ticket
+            document.getElementById('ticket').style.display = 'block';
+            // Hide the booking form
+            document.querySelector('.form-container').style.display = 'none';
+        }
+ const toggleButton = document.getElementById('toggle-button');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('night-mode');
+        });
+
+
+    </script>
+</body>
+</html>

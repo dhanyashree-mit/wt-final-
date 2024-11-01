@@ -1,0 +1,182 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family:'Freckle Face', cursive;}
+
+/* Background Color for Body */
+body {
+    background-color: #f0f4f8; /* Updated background color for the whole page */
+    color: #333;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #290232;
+    position:sticky;
+    top: 0;
+    margin-left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav img {
+    height: 50px;
+    width: 50px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.navbar h1 {
+    font-size: 1.8em;
+    color: #e6d4a6;
+    margin: 0;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 40px;
+    font-size: 1.5em;
+}
+
+.navbar a {
+    color: #f5e4c3;
+    text-decoration: none;
+    padding: 15px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #b91372;
+    border-radius: 5px;
+}
+
+/* Header Section */
+header {
+    background-color: #00334d; /* Updated header background color */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Workshop Section */
+.workshops {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #105f69 ;/* Background color for workshop section */
+}
+
+.workshop {
+    background-color: #84dfeb;
+    border-radius: 10%;
+    width: 300px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workshop:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.workshop h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.workshop p {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+button{
+	
+}
+
+.register-btn {
+    background-color: #004466;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #00334d;
+}
+
+/* QR Code */
+.qr-code {
+    margin-top: 10px;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background-color: #002933; /* Updated footer background color */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+   
+    width: 100%;
+    bottom: 0;
+}
+.hamburger {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #f5e4c3;
+}
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 70px; /* Adjusted for the height of the navbar */
+        left: 50%;
+        width: 50%;
+        background-color: #290232;
+        z-index: 999;
+    }
+    .navbar nav a {
+        padding: 15px;
+        text-align:center;
+        border-bottom: 1px solid #444;
+    }
+    .navbar.active nav {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+
+    }
+}

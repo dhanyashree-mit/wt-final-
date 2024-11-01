@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Workshop Registration - Festopia 2024</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Workshop Registration - Festopia 2024</h1>
+        <p>Register for exciting tech workshops and enhance your skills!</p>
+    </header>
+
+    <section class="registration-form">
+        <h2>Fill out the form below to register:</h2>
+        <form id="workshopForm">
+        
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" accesskey="n" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email"  accesskey="m" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"  accesskey="p" required>
+            </div>
+
+         
+            <div class="form-group">
+                <label for="workshop">Select Workshop:</label>
+                <select id="workshop" name="workshop" required>
+                    <option value="">-- Select a Workshop --</option>
+                    <option value="AI Workshop">Introduction to Artificial Intelligence & Machine Learning</option>
+                    <option value="Cybersecurity Workshop">Cybersecurity for the Modern Era</option>
+                    <option value="Web Development Workshop">Web Development with JavaScript & React</option>
+                    <option value="Blockchain Workshop">Blockchain and Cryptocurrencies: A Hands-On Approach</option>
+					<option value="Henna Art">Henna Art</option>
+					<option value="Finding your Voice">Finding Your Voice</option>
+					<option value="Dance Like No One's Watching">Dance Like No One's Watching</option>
+					<option value="Finding Your Voice">Finding Your Voice</option>
+					<option value="Mixology(Mocktails & Cocktails)">Mixology(Mocktails & Cocktails)</option>
+                </select>
+            </div>
+
+          
+            
+
+            <div class="form-group">
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required> I agree to the <a href="#">terms and conditions</a>.
+                </label>
+            </div>
+
+            <button type="submit" id="submitBtn">Register Now</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tech Fest. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
